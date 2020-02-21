@@ -1,0 +1,608 @@
+@import "variables";
+@import "mixins";
+@import "media";
+
+html, body {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    width: 80vw;
+}
+
+//--------------------------------------- Opening Language Frontpage
+
+
+@include languageFrontpage;
+
+
+//--------------------------------------- Header Section
+
+
+.header-wrapper {
+    @include flex(center, flex-start, initial);
+    height: 100vh;
+    background-color: thisColor(dark);
+    position: relative;
+}
+  
+.header__opening-animation-wrapper {
+    @include flex(center, center, initial);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+
+    @keyframes vanish {
+        to {
+            @include invisible;
+        }
+    }
+}
+
+.header__opening-animation-container {
+    @include flex(center, center, initial);
+    height: 100%;
+    background-image: url('/data/pictures/aryan-1-2.jpg');
+    @include backgroundImageProperties(contain, center, no-repeat, initial);    
+
+    svg {
+        width: 100%;
+        height: 100%;
+        animation: vanish;
+        animation-duration: 2s;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;    
+
+        path {
+            fill-opacity: 0;
+            stroke: thisColor(primary);
+            stroke-width: 2;
+            stroke-dasharray: 8000px;
+            stroke-dashoffset: 8000px;
+            animation: draw 3s ease-in-out 1s 1 normal forwards;
+
+            @keyframes draw {
+                to {
+                    stroke-dashoffset: 6500;
+                }
+            }
+        }
+    }
+}
+
+.header__container {
+    @include flex(space-between, flex-start, initial);
+    margin-top: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header__logo-div {
+    @include invisible;
+    width: 200px;
+    position: relative;
+    animation: logo-appear 1s ease-in 3s 1 normal forwards;
+    margin-top: 20px;
+
+    @keyframes logo-appear {
+        to {
+            @include visible;
+            margin-left: 0;
+        }
+    }
+
+    img {
+        width: 100%;
+        background-color: thisColor(dark);
+    }
+}
+
+.header__navbar {
+    @include flex(initial, initial, column);
+    font-family: 'Khand', sans-serif;
+    position: relative;
+    transition: all 1s;
+    z-index: 10;
+
+    .header__hambi-menu {
+        display: none;
+    }
+
+    .navbar-list {
+        @include invisible;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        animation: appear 1s ease-in 4.5s 1 normal forwards;
+
+        @keyframes appear {
+            to {
+                @include visible;
+            }
+        }
+
+        li {
+            font-size: 30px;
+            padding: 10px 30px 10px 0;
+            text-align: center;
+
+            &:hover {
+                color: thisColor(secondary);
+            }
+        }
+
+        .nav-button {
+            text-decoration: none;
+            color: thisColor(primary);
+
+            .navButtonActive {
+                color: thisColor(primary);
+            }
+        }
+    }
+
+    .vertical-line {
+        height: 400px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+        svg {
+            height: 100%;
+            fill-opacity: 1;
+            stroke: thisColor(primary);
+            stroke-width: 2;
+            stroke-dasharray: 8000px;
+            stroke-dashoffset: 8000px;
+            animation: line-draw 4s ease-in-out 4s 1 normal forwards;
+    
+            @keyframes line-draw {
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+        }
+    }
+}
+
+.header__language-div {
+    @include invisible;
+    width: 100px;
+    height: 20px;
+    display: flex;
+    position: absolute;
+    bottom: 10vh;
+    left: 10vw;
+    animation: appear 1s ease-in 4.5s 1 normal forwards;
+
+    a {
+        margin-right: 10px;
+
+        img {
+            width: 40px;
+        }
+    }
+}
+
+.header__language-flag {
+
+    transition: all, 0.5s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+
+//--------------------------------------- Fixed Background
+
+
+.fixed-background-div--hearts {
+    background-color: map-get($map: $colors, $key: dark);
+    background-image: url("/data/pictures/cards_retro_poker_Ace_1920x1200-2.jpg");
+    @include backgroundImageProperties(contain, center, repeat, fixed);
+    height: 90vh;
+}
+
+
+//--------------------------------------- About Section
+
+
+
+.section-about {
+    @include flex(center, initial, initial);
+    background-image: url('/data/pictures/a10-2.jpg');
+    @include backgroundImageProperties(cover, center, no-repeat, initial);
+    border-top: 10px solid thisColor(dark);
+    border-bottom: 10px solid thisColor(dark);
+}
+
+.section-about__container {
+    min-height: 90vh;
+    width: 80vw;
+
+    h1 {
+        color: thisColor(primary);
+        font-size: 40px;
+        font-family: 'Expletus Sans', cursive;
+        width: 40%;
+        margin-top: 100px;
+    }
+
+    p {
+        color: thisColor(primary);
+        font-family: 'Expletus Sans', cursive;
+        width: 40%;
+        font-size: 18px;
+        margin-top: 100px;
+        font-family: 'Roboto Condensed', sans-serif;
+        line-height: 1.4em;
+
+        &::before {
+            content: '';
+            padding-left: 50px;
+        }
+    }
+}
+
+.fixed-background-div--spades {
+    background-image: url("/data/pictures/ace-spades-wallpaper.jpg");
+    @include backgroundImageProperties(contain, center, repeat, fixed);
+
+    &-s {
+        height: 20vh;
+    }
+
+    &-l {
+        height: 60vh;
+    }
+}
+
+
+//--------------------------------------- Program Section
+
+
+.program-section {
+    background-image: url("/data/pictures/ace-spades-wallpaper.jpg");
+    @include backgroundImageProperties(contain, center, repeat, fixed);
+    @include flex(center, initial, initial);
+}
+
+.program-section__container {
+    @include flex (center, center, column);
+    position: relative;
+    background-color: rgba(thisColor(dark), 0.9);
+}
+
+.program-section__heading-div {
+    width: 100%;
+    
+    .program-section__heading {
+        
+        margin: 0;
+        padding: 50px 0;
+        color: thisColor(dark);
+        font-size: 40px;
+        font-family: 'Khand', cursive;
+        text-align: center;
+        background-color: rgba(thisColor(primary), 1);
+        position: relative;
+    
+        &::after {
+            content: '';
+            width: 100%;
+            height: 99%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            // border-bottom: 2px solid rgba(thisColor(secondary), 0.5);
+        }
+    }
+}
+
+
+.program-section__program-services {
+    @include flex(initial, initial, initial);
+    width: 100%;
+    background-color: thisColor(primary);
+
+    .program-service {
+        @include flex (center, center, initial);
+        flex-grow: 1;
+        transition: all 0.5s;
+        position: relative;
+        background-color: rgba(255, 255, 255, 1);
+
+        &:hover {
+            background-color: rgba(thisColor(secondary), 0.5);
+            cursor: pointer;
+        }
+    }
+    
+    .service-active {
+        background-color: rgba(thisColor(secondary), 0.6);
+    }
+}
+
+.program-service-icon {
+    width: 7vw;
+    height: 7vw;
+    padding: 60px 0;
+}
+
+.program-section__panels-container {
+    width: 100%;
+}
+
+.program-section__panel {
+    width: 100%;
+    margin: 50px 0;
+    @include flex(initial, initial, initial);
+    @include invisible;
+
+    .program-description {
+        flex: 1;
+        @include flex(flex-start, center, column);
+        color: thisColor(primary);
+        font-family: 'Khand', cursive;
+
+        h1 {
+            text-align: center;
+            font-size: 32px
+        }
+
+        p {
+            text-align: center;
+            width: 70%;
+            font-size: 20px;
+        }
+
+        span {
+            display: block;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+    }
+
+    .program-image {
+        flex: 2;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.content-visible {
+    @include visible;
+    display: flex;
+}
+
+.content-invisible {
+    @include invisible;
+}
+
+.display-none {
+    display: none;
+}
+
+
+//--------------------------------------- Gallery Section
+
+
+.gallery-section {
+    background-image: url("/data/pictures/ace-spades-wallpaper.jpg");
+    @include backgroundImageProperties(contain, center, repeat, fixed);
+    @include flex(center, initial, initial);
+    padding-bottom: 100px;
+}
+
+.gallery-section__container {
+    @include flex (center, center, column);
+    position: relative;
+    background-color: thisColor(dark);
+    margin: 100px 0 100px 0;
+    padding-bottom: 100px;
+
+    h1 {
+        width: 100%;
+        padding: 30px 0;
+        color: thisColor(primary);
+        font-size: 40px;
+        font-family: 'Khand', cursive;
+        text-align: center;
+        position: relative;    
+    }
+}
+
+.gallery-section__gallery-div {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.gallery-section__gallery-card {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    z-index: 10;
+    display: none;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.gallery-section__buttons-div {
+    width: 100%;
+    @include flex(space-between, center, row);
+    position: absolute;
+    top: 50%;
+}
+
+.gallery-section__buttons {
+    background-color: thisColor(dark);
+    color: thisColor(primary);
+    font-size: 40px;
+    font-weight: bold;
+    border: 0px solid black;
+    padding: 20px 50px;
+    transition: all 0.5s;
+    z-index: 10;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+#gallery-section__prev-button {
+    left: 0;
+    // padding-left: 50px;
+}
+
+#gallery-section__next-button {
+    right: 0;
+    // padding-right: 50px;
+}
+
+
+//--------------------------------------- Contact Section (Footer)
+
+
+.contact-section {
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    @include flex(center, initial, initial);
+}
+
+.contact-section__container {
+    @include flex(initial, initial, row);
+}
+
+.contact-section__contact-div {
+    height: 100%;
+    flex: 1;
+    position: relative;
+}
+
+.contact-section__contact-div-info {
+    @include flex(center, center, initial);
+
+    .contact-info {
+        font-family: 'Khand', cursive;
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        
+        .logo {
+            width: 200px;
+        }
+    
+        .hashtag {
+            font-style: italic;
+            font-size: 0.8em;
+        }
+    }
+
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 60%;
+        border-right: 1px solid rgba(thisColor(secondary), 0.5);
+        @include absolutelyCentered;
+    }
+}
+
+.contact-section__contact-div--social-media {
+    @include flex(center, center, column);
+    font-size: 60px;
+
+    .fab {
+        color: thisColor(dark);
+        margin: 20px 0;
+        transition: all 0.3s;
+    }
+
+    .fa-facebook-f {
+        &:hover {
+            color: #3E5B99;
+        }
+    }
+
+    .fa-instagram {
+        &:hover {
+            color: orange;
+        }
+    }
+
+    .fa-youtube {
+        &:hover {
+            color: #FF0000;
+        }
+    }
+}
+
+
+//--------------------------------------- Contact Section (Footer)
+
+
+.comeback-button {
+    width: 8vw;
+    height: 8vw;
+    position: fixed;
+    bottom: 20px;
+    right: 1vw;
+    z-index: 20;
+    border: 2px solid transparent;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all 1s;
+    padding: 10px;
+
+    img {
+        height: 60%;
+        @include absolutelyCentered;
+    }
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+    }
+    
+    &:focus {
+        outline: none;
+    }
+}
+
+.button-invisible {
+    @include invisible;
+}
+
+
+
+
+  
+  /* ----------------------- Media query < 700px -------------------------------
+  ----------------------------------------------------------------------------*/
+  
+@include media;
+

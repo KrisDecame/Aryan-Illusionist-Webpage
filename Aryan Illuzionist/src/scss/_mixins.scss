@@ -1,0 +1,130 @@
+@mixin invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@mixin visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@mixin flex($justifyContent, $alignItems, $flexDirection) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    flex-direction: $flexDirection;
+}
+
+@mixin backgroundImageProperties($size, $position, $repeat, $attachment) {
+    background-size: $size;
+    background-position: $position;
+    background-repeat: $repeat;
+    background-attachment: $attachment;
+}
+
+@mixin absolutelyCentered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin contentButton {
+    height: 40px;
+    border: 2px solid thisColor(secondary);
+    color: thisColor(secondary);
+    font-family: sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: all 0.5s;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:hover {
+        cursor: pointer;
+        border: 1px solid thisColor(secondary);
+        background-color: thisColor(secondary);
+        color: thisColor(primary);
+    }
+    
+    &:focus {
+        outline: none;
+    }
+}
+
+
+//-------------------------------------------------- Language Frontpage
+
+
+@mixin languageFrontpage {
+    .language-wrapper {
+        @include flex(left, center, initial);
+        width: 100vw;
+        height: 100vh;
+        background-color: thisColor(dark);
+        position: relative;
+        font-family: 'Khand', sans-serif;
+        background-image: url('/data/pictures/a10-2.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .language-wrapper__welcome {
+        margin-bottom: 100px;
+        font-size: 50px;
+
+        p {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .language-wrapper__container {
+        @include flex(center, center, column);
+        color: white;
+        margin-left: 10%;
+        
+        .language-buttons {
+            text-decoration: none;
+            width: 70px;
+            margin-bottom: 10px;
+            
+            img {
+                border-radius: 6px;
+                width: 100%;
+            }
+        }
+    }
+
+    .hashtag {
+        color: white;
+        position: absolute;
+        bottom: 10%;
+        font-size: 20px;
+    }
+
+    @media only screen and (max-width: 800px) {
+
+        .language-wrapper__welcome {
+            font-size: 40px;
+        }
+
+        .language-wrapper__container {
+
+            .language-buttons {
+                width: 60px;
+                margin-bottom: 5px;
+                
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+

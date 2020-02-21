@@ -1,0 +1,280 @@
+@mixin media {
+    
+    @media only screen and (max-width: 800px) {
+
+        .container{
+            width: 100%;
+        }
+
+
+        //--------------------------------------- Header Section
+
+
+        .header__opening-animation-container {
+            width: 80vw;
+            height: fit-content;
+            align-self: flex-end;
+            margin-bottom: 50px;
+        }
+
+        .header__container {
+            width: 80vw;
+        }
+
+        .header__background-image {
+            height: 70%;
+            bottom: 0;
+            top: initial;
+            transform: translate(-50%, 0);
+        }
+
+        .header__logo-div {
+            width: 150px;
+            margin-top: 10px;
+        }
+
+        .header__navbar {
+
+            width: fit-content;
+            height: initial;
+            left: 0;
+            flex-direction: column;
+            clip-path: initial;
+            
+            .navbar-list {
+                @include invisible;
+                margin: 0;
+                animation: none;
+                transition: all 1s;
+            }
+
+            .visible {
+                @include visible;
+                transition: opacity 1s;
+            }
+
+            .navbar-list li {
+                width: 100px;
+                font-size: 26px;
+                padding: 10px 0;
+                text-align: center;
+            }
+        }
+
+        #header__hambi-menu {
+
+            @include flex(space-between, center, column);
+            width: 40px;
+            height: 30px;
+            margin: 0 20px;
+            padding: 10px;
+            transition: transform 0.5s;
+            animation: hambi-menu-appear 1s ease-in 3s 1 normal forwards;
+            @include invisible;
+            
+                @keyframes hambi-menu-appear {
+                    to {
+                        @include visible;  
+                    }
+                }
+
+                .hambi-menu__line {
+                    width: 100%;
+                    height: 4px;
+                    background-color: thisColor(primary);
+                    border-radius: 10px;
+                    transition: all 0.5s;
+                }
+        }
+
+        #header__hambi-menu.active {
+
+            .hambi-menu__line {
+                background-color: thisColor(secondary);
+
+                &:nth-child(1) {
+                    transform: translate(7px, 8px) rotate(70deg);
+                }
+        
+                &:nth-child(2) {
+                    transform: translateY(3px);
+                    width: 50%;
+                }
+        
+                &:nth-child(3) {
+                    transform: translate(-6px, -18px) rotate(-70deg);
+                }
+            }
+        }
+
+        .vertical-line {
+            display: none;
+        }    
+
+
+        //--------------------------------------- Fixed Background
+
+        .fixed-background {
+            display: none;
+        }
+
+
+        //--------------------------------------- About Section
+
+        .section-about__container {
+            
+            width: 80vw;
+            
+            h1 {
+                margin: 30px 0;
+                font-size: 36px;
+            }
+            
+            p {
+                width: 50%;
+                font-size: 16px;
+                margin: 50px 0;
+                
+                &::before {
+                    content: '';
+                    padding-left: 50px;
+                }
+            }
+        }
+        
+        
+        //--------------------------------------- Program Section
+
+
+        .fixed-background-div--spades {
+            @include backgroundImageProperties(cover, center, repeat, scroll);
+        }
+        
+
+
+        //--------------------------------------- Program Section
+
+        .program-section__heading-div {
+            @include flex (center, initial, initial);
+            background-color: thisColor(primary);
+        }
+
+        .program-section__heading {
+
+            
+            width: 50%;
+            
+            &::after {
+                display: none;
+            }
+        }
+
+        .program-service-icon {
+            width: 12vw;
+            height: 12vw;
+            padding: 40px 0;
+        }
+
+        .program-section__panel {
+            @include flex(initial, initial, column);
+            margin: 0;
+
+            .program-description {
+                width: 100%;
+                margin: 50px 0;
+
+                h1 {
+                    text-align: center;
+                }
+
+                p {
+                    text-align: center;
+                    width: 70%;
+                }
+            }
+
+            .program-image {
+                flex-basis: 200px;
+            }
+        }
+
+
+        //--------------------------------------- Gallery Section    
+        
+
+        .gallery-section {
+            background-image: none;
+            // padding-bottom: 100px;
+        }
+
+        .gallery-section__container {
+            margin: 0;
+            padding-bottom: 0;
+        }
+        
+        .gallery-section__gallery-div {
+            width: 100%;
+        }
+
+        .gallery-section__buttons-div {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        
+        .gallery-section__buttons {
+            flex-grow: 1;
+            padding: 20px 0;
+        }
+
+        
+        //--------------------------------------- Contact Section
+
+
+        .contact-section {
+            margin-bottom: 100px;
+        }
+        
+        .contact-section__container {
+            @include flex(initial, initial, column);
+        }
+
+        .contact-section__contact-div-info {
+            margin-top: 100px;
+        }
+
+        .contact-section__contact-div--social-media {
+            @include flex(center, center, row);
+            font-size: 50px;
+        
+            .fab {
+                color: thisColor(dark);
+                margin: 20px;
+                transition: all 0.5s;
+            }
+        
+            .fa-facebook-f {
+                &:hover {
+                    color: #3E5B99;
+                }
+            }
+        
+            .fa-instagram {
+                &:hover {
+                    color: orange;
+                }
+            }
+        
+            .fa-youtube {
+                &:hover {
+                    color: #FF0000;
+                }
+            }
+        }
+
+        .comeback-button {
+            width: 22vw;
+            height: 22vw;
+        }
+    }
+}

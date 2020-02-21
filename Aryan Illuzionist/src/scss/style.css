@@ -1,0 +1,239 @@
+body {
+  margin: 0;
+}
+
+.header-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: center;
+}
+
+.opening-animation--background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 1);
+  animation: vanish;
+  animation-duration: 2s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  /* display: none; */
+}
+
+@keyframes vanish {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.opening-animation-div {
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: center;
+}
+
+.opening-animation-div svg {
+  width: 100%;
+  height: 100%;
+}
+
+.opening-animation-div svg path {
+  fill-opacity: 0;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 2;
+  stroke-dasharray: 8000px;
+  stroke-dashoffset: 8000px;
+  animation: draw 3s ease-in-out 1s 1 normal forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 6500;
+  }
+}
+
+.header__background-image {
+  background-image: url('/data/pictures/aryan-1-2-2.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 70%;
+  height: 100%;
+  align-self: flex-end;
+}
+
+.white-line {
+  height: 400px;
+  margin: 50px 0 0 250px;
+}
+
+.white-line svg {
+  width: 3px;
+  height: 100%;
+  fill-opacity: 1;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 2;
+  stroke-dasharray: 8000px;
+  stroke-dashoffset: 8000px;
+  animation: line-draw 4s ease-in-out 2.5s 1 normal forwards;
+}
+
+@keyframes line-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.header__navbar {
+  display: flex;
+  font-family: 'Khand', sans-serif;
+  position: absolute;
+  left: 0;
+}
+
+.navbar-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 50px 0 0 -20px;
+  animation: nav-list-appear 1s ease-in 3s 1 normal forwards;
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes nav-list-appear {
+  to {
+    opacity: 1;
+    visibility: visible;
+    margin-left: 0;
+  }
+}
+
+.navbar-list li {
+  width: 150px;
+  font-size: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.navbar-list li:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.navbar-list li:hover a {
+  color: black;  
+}
+
+.navbar-list a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.hambi-menu {
+  display: none;
+}
+
+
+/* ----------------------- Media query < 700px --------
+-----------------------------------------------------*/
+
+
+
+@media only screen and (max-width: 700px) {
+
+  .opening-animation-div {
+    top: 65%;
+    height: 70%;
+  }
+
+  .header__background-image {
+    height: 70%;
+  }
+
+  #header__hambi-menu {
+    width: 40px;
+    height: 30px;
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s;
+    animation: hambi-menu-appear 1s ease-in 3s 1 normal forwards;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @keyframes hambi-menu-appear {
+    to {
+      opacity: 1;
+      visibility: visible;  
+    }
+  }
+
+  .hambi-menu__line {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    transition: all 0.5s;
+  }
+
+  #header__hambi-menu.active .hambi-menu__line:nth-child(1) {
+    transform: translate(7px, 8px) rotate(70deg);
+    background-color: rgba(255, 0, 0, 1);
+  }
+
+  #header__hambi-menu.active .hambi-menu__line:nth-child(2) {
+    transform: translateY(3px);
+    background-color: rgba(255, 0, 0, 1);
+    width: 50%;
+  }
+
+  #header__hambi-menu.active .hambi-menu__line:nth-child(3) {
+    transform: translate(-6px, -18px) rotate(-70deg);
+    background-color: rgba(255, 0, 0, 1);
+  }
+  
+  .white-line {
+    display: none;
+  }
+
+  .header__navbar {
+    left: 0;
+    flex-direction: column;
+    margin: 30px 0 0 30px;
+  }
+
+  .navbar-list {
+    opacity: 0;
+    visibility: hidden;
+    margin: 0;
+    animation: none;
+    transition: all 1s;
+  }
+
+  .visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s;
+  }
+
+  .navbar-list li {
+    width: 100px;
+    font-size: 26px;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+}

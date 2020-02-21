@@ -1,0 +1,12 @@
+$colors: (
+    
+    primary: rgba(255, 255, 255, 1),
+    secondary: #B30410,
+    main: #9D0306,
+    dark: rgba(0, 0, 0, 1)
+
+);
+
+@function thisColor($color) {
+    @return map-get($map: $colors, $key: $color)
+};
